@@ -10,8 +10,8 @@
 ## Descrizione
 
 Questo script esplora il byte attributo restituito da `SCREEN(riga, colonna, 1)` in modalità testo VGA.  
-Il suo scopo è verificare empiricamente la formula che codifica il colore del testo e dello sfondo in un singolo byte, 
-e ricostruire da esso i valori originali.
+Il suo scopo è verificare empiricamente la formula che codifica il colore del testo e dello sfondo in un 
+singolo byte, e ricostruire da esso i valori originali.
 
 Il programma stampa a video (e su file `prova.txt`) una tabella con:
 - il colore del testo (`testo`)
@@ -36,8 +36,8 @@ Il byte attributo in modalità testo VGA è così strutturato:
 
 ```basic
 colore.letto = testo + sfondo * 16 - 112 * (testo > 15)
-Nota: il termine -112 * (testo > 15) corregge l’overflow del bit 4 del testo, che altrimenti finirebbe nel bit 7 (intensità)
-e altererebbe il valore totale.
+Nota: il termine -112 * (testo > 15) corregge l’overflow del bit 4 del testo, che altrimenti finirebbe
+nel bit 7 (intensità) e altererebbe il valore totale.
 
 Formule inverse (decodifica)
 colore.testo  = (colore.letto AND 15) + (colore.letto \ 8 AND 16)
@@ -56,5 +56,6 @@ colore.sfondo = (colore.letto \ 16) AND 7
 
 Note storiche
 
-Questo script fu completato il 2 ottobre 1988, in un’epoca in cui la documentazione era scarsa e l’unico debugger era l’intuizione.
-È un esempio di reverse engineering creativo, dove la logica binaria incontra la poesia del colore.
+Questo script fu completato il 2 ottobre 1988, in un’epoca in cui la documentazione era scarsa
+e l’unico debugger era l’intuizione. È un esempio di reverse engineering creativo, dove la
+logica binaria incontra la poesia del colore.
